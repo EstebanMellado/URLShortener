@@ -22,9 +22,9 @@ namespace URLShortener.Api.Controllers
         public IActionResult Get(string shorturl)
         {
             URLModel shortUrl = _urlService.GetShortURL(shorturl);
-
             if (shortUrl != null)
             {
+                _logger.LogInformation($"Acceso a rediccion de {shorturl} a {shortUrl.LongURL}");
                 return Redirect(shortUrl.LongURL);
             }
 

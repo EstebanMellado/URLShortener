@@ -1,6 +1,6 @@
-﻿using System.Collections.Generic;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using System.Collections.Generic;
 using URLShortener.Api.Models;
 using URLShortener.Api.Services;
 
@@ -46,7 +46,10 @@ namespace URLShortener.Api.Controllers
             {
                 ShortUrlResponse result = _urlService.SaveURL(model);
                 if (result != null)
+                {
+                    _logger.LogInformation($"URL creada: {result.Model.ShortURL} a {result.Model.LongURL}");
                     return Ok(result);
+                }
             }
 
             return BadRequest(ModelState.Values);
@@ -57,7 +60,10 @@ namespace URLShortener.Api.Controllers
         {
             ShortUrlResponse result = _urlService.DeleteURL(shorturl);
             if (result != null)
+            {
+                _logger.LogInformation($"URL eliminada: {shorturl}");
                 return Ok(result);
+            }
 
             return NotFound(result);
         }
