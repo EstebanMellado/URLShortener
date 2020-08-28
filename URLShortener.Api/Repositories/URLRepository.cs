@@ -22,13 +22,12 @@ namespace URLShortener.Api.Repositories
             return GetBy(c => c.ShortURL == shortUrl);
         }
 
-
         public URLModel GetURLByLongUrl(string longUrl)
         {
             return GetBy(c => c.LongURL == longUrl);
         }
 
-        public URLModel Save(URLModel model)
+        public URLModel SaveUrl(URLModel model)
         {
             try
             {
@@ -41,5 +40,20 @@ namespace URLShortener.Api.Repositories
 
             return model;
         }
+
+        public bool DeleteUrl(string shortUrl)
+        {
+            try
+            {
+                var url = GetBy(c => c.ShortURL == shortUrl);
+                Delete(url);
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
     }
 }

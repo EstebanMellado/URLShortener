@@ -8,5 +8,6 @@ namespace URLShortener.Api.Services
         IEnumerable<URLModel> GetAll();
         URLModel GetShortURL(string shortUrl);
         ShortUrlResponse SaveURL(ShortURLRequest urlModel);
+        ShortUrlResponse DeleteURL(string shortUrl);
     }
 }

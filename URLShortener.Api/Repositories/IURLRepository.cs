@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using URLShortener.Api.Models;
 
 namespace URLShortener.Api.Repositories
@@ -11,6 +8,7 @@ namespace URLShortener.Api.Repositories
         IEnumerable<URLModel> GetAll();
         URLModel GetURLByShortUrl(string shortUrl);
         URLModel GetURLByLongUrl(string longUrl);
-        URLModel Save(URLModel urlModel);
+        URLModel SaveUrl(URLModel urlModel);
+        bool DeleteUrl(string shortUrl);
     }
 }

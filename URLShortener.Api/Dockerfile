@@ -2,6 +2,11 @@
 
 FROM mcr.microsoft.com/dotnet/core/aspnet:3.1-buster-slim AS base
 WORKDIR /app
+
+# For deploy, only this two lines. Must be in publish folder
+#COPY . .
+#CMD ASPNETCORE_URLS=http://*:$PORT dotnet URLShortener.Api.dll
+
 EXPOSE 80
 EXPOSE 443
 

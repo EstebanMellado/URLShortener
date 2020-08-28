@@ -14,6 +14,17 @@ namespace URLShortener.Api.Services
             _urlRepository = shortUrlRepository;
         }
 
+        public ShortUrlResponse DeleteURL(string shortUrl)
+        {
+            bool result = _urlRepository.DeleteUrl(shortUrl);
+            return new ShortUrlResponse
+            {
+                Model = null,
+                Success = result,
+                Message = result ? $"URL {shortUrl} eliminada" : $"No se pudo eliminar la URL {shortUrl}"
+            };
+        }
+
         public IEnumerable<URLModel> GetAll()
         {
             return _urlRepository.GetAll();
@@ -33,7 +44,7 @@ namespace URLShortener.Api.Services
             }
             else
             {
-                URLModel savedModel = _urlRepository.Save(URLMapper.MapRequestModelToDBModel(urlModel));
+                URLModel savedModel = _urlRepository.SaveUrl(URLMapper.MapRequestModelToDBModel(urlModel));
 
                 return new ShortUrlResponse
                 {

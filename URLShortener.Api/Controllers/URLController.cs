@@ -51,5 +51,15 @@ namespace URLShortener.Api.Controllers
 
             return BadRequest(ModelState.Values);
         }
+
+        [HttpDelete("{shorturl}", Name = "Delete")]
+        public IActionResult Delete(string shorturl)
+        {
+            ShortUrlResponse result = _urlService.DeleteURL(shorturl);
+            if (result != null)
+                return Ok(result);
+
+            return NotFound(result);
+        }
     }
 }
