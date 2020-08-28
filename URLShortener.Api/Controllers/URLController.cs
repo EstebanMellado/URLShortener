@@ -39,7 +39,6 @@ namespace URLShortener.Api.Controllers
             return NotFound();
         }
 
-        // POST: api/Default
         [HttpPost]
         public IActionResult Post([FromBody] ShortURLRequest model)
         {
