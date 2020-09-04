@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using URLShortener.Api.Models;
 using URLShortener.Api.Repositories.Base;
 
@@ -10,11 +11,16 @@ namespace URLShortener.Api.Repositories
         {
         }
 
+        public List<RedirectModel> GetAll()
+        {
+            return GetList();
+        }
+
         public void SaveLog(RedirectModel log)
         {
             try
             {
-                this.Create(log);
+                Create(log);
             }
             catch (Exception ex)
             {
