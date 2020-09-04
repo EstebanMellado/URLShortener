@@ -7,11 +7,10 @@ namespace URLShortener.Api.Repositories
 {
     public class URLRepository : BaseMongoRepository<URLModel>, IURLRepository
     {
-
         public URLRepository(string mongoDBConnectionString, string dbName, string collectionName) : base(mongoDBConnectionString, dbName, collectionName)
         {
-
         }
+
         public IEnumerable<URLModel> GetAll()
         {
             return GetList();
@@ -54,6 +53,5 @@ namespace URLShortener.Api.Repositories
                 return false;
             }
         }
-
     }
 }

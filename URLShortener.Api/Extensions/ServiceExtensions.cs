@@ -24,6 +24,8 @@ namespace URLShortener.Api.Extensions
             string mongoConnectionString = Configuration.GetConnectionString("MongoConnectionString");
             services.AddTransient<IURLRepository>(s => new URLRepository(mongoConnectionString, "Url", "ShortUrl"));
             services.AddTransient<IURLService, URLService>();
+            services.AddTransient<IRedirectRepository>(s => new RedirectRepository(mongoConnectionString, "Url", "Redirects"));
+            services.AddTransient<IRedirectService,RedirectService>();
         }
     }
 }

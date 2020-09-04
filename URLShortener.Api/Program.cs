@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
+using Serilog;
 
 namespace URLShortener.Api
 {
@@ -14,7 +15,11 @@ namespace URLShortener.Api
             Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
-                    webBuilder.UseStartup<Startup>();
+                    webBuilder.UseStartup<Startup>()
+                        .UseSerilog((context, config) =>
+                        {
+                            config.ReadFrom.Configuration(context.Configuration);
+                        });
                 });
     }
 }
