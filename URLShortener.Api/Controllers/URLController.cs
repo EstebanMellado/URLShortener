@@ -39,8 +39,8 @@ namespace URLShortener.Api.Controllers
             return NotFound();
         }
 
-        [HttpGet("{longurl}", Name = "GetLongUrl")]
-        public IActionResult GetLongUrl(string longurl)
+        [HttpGet("GetLongUrl/{longurl}", Name = "GetLongUrl")]
+        public IActionResult GetLongUrl([FromQuery]string longurl)
         {
             URLModel longUrl = _urlService.GetLongURL(longurl);
 

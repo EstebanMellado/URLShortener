@@ -1,20 +1,20 @@
-﻿using System;
+﻿using URLShortener.Api.Models;
 using URLShortener.Api.Repositories;
 
 namespace URLShortener.Api.Services
 {
     public class LogService : ILogService
     {
-        private readonly IURLRepository _urlRepository;
+        private readonly ILogRepository _logRepository;
 
-        public LogService(IURLRepository urlRepository)
+        public LogService(ILogRepository logRepository)
         {
-            _urlRepository = urlRepository;
+            _logRepository = logRepository;
         }
 
-        public void LogInfo(string text)
+        public void LogInfo(RedirectModel log)
         {
-            throw new NotImplementedException();
+            _logRepository.SaveLog(log);
         }
     }
 }

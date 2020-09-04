@@ -11,21 +11,24 @@ namespace URLShortener.Api.Controllers
     {
         private IURLService _urlService;
         private readonly ILogger<RedirectController> _logger;
+        private readonly ILogService _logService;
 
-        public RedirectController(IURLService urlService, ILogger<RedirectController> logger)
+        public RedirectController(IURLService urlService, ILogger<RedirectController> logger, ILogService logService)
         {
             _urlService = urlService;
             _logger = logger;
+            _logService = logService;
         }
 
         [HttpGet("{shorturl}", Name = "Redirect")]
         public IActionResult Get(string shorturl)
         {
-            URLModel shortUrl = _urlService.GetShortURL(shorturl);
-            if (shortUrl != null)
+            URLModel urlModel = _urlService.GetShortURL(shorturl);
+            if (urlModel != null)
             {
-                _logger.LogInformation($"Acceso a Redirect de {shorturl} a {shortUrl.LongURL}");
-                return Redirect(shortUrl.LongURL);
+                _logger.LogInformation($"Acceso a Redirect de {urlModel.ShortURL} a {urlModel.LongURL}");
+                //_logService.LogInfo(new RedirectModel() { ShortURL = urlModel.ShortURL, LongURL = urlModel.LongURL });
+                return Redirect(urlModel.LongURL);
             }
 
             return NotFound();

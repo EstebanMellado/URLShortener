@@ -1,7 +1,9 @@
-﻿namespace URLShortener.Api.Services
+﻿using URLShortener.Api.Models;
+
+namespace URLShortener.Api.Services
 {
     public interface ILogService
     {
-        void LogInfo(string text);
+        void LogInfo(RedirectModel log);
     }
 }
