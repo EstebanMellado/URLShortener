@@ -4,9 +4,9 @@ using URLShortener.Api.Repositories.Base;
 
 namespace URLShortener.Api.Repositories
 {
-    public class LogRepository : BaseMongoRepository<RedirectModel>, ILogRepository
+    public class RedirectRepository : BaseMongoRepository<RedirectModel>, IRedirectRepository
     {
-        public LogRepository(string mongoDBConnectionString, string dbName, string collectionName) : base(mongoDBConnectionString, dbName, collectionName)
+        public RedirectRepository(string mongoDBConnectionString, string dbName, string collectionName) : base(mongoDBConnectionString, dbName, collectionName)
         {
         }
 

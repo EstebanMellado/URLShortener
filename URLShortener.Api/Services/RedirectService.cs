@@ -3,16 +3,16 @@ using URLShortener.Api.Repositories;
 
 namespace URLShortener.Api.Services
 {
-    public class LogService : ILogService
+    public class RedirectService : IRedirectService
     {
-        private readonly ILogRepository _logRepository;
+        private readonly IRedirectRepository _logRepository;
 
-        public LogService(ILogRepository logRepository)
+        public RedirectService(IRedirectRepository logRepository)
         {
             _logRepository = logRepository;
         }
 
-        public void LogInfo(RedirectModel log)
+        public void SaveInfo(RedirectModel log)
         {
             _logRepository.SaveLog(log);
         }

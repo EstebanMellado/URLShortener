@@ -2,7 +2,7 @@
 
 namespace URLShortener.Api.Repositories
 {
-    public interface ILogRepository
+    public interface IRedirectRepository
     {
         void SaveLog(RedirectModel log);
     }
