@@ -24,7 +24,7 @@ namespace URLShortener.Api.Controllers
             URLModel shortUrl = _urlService.GetShortURL(shorturl);
             if (shortUrl != null)
             {
-                _logger.LogInformation($"Acceso a rediccion de {shorturl} a {shortUrl.LongURL}");
+                _logger.LogInformation($"Acceso a Redirect de {shorturl} a {shortUrl.LongURL}");
                 return Redirect(shortUrl.LongURL);
             }
 

@@ -30,6 +30,11 @@ namespace URLShortener.Api.Services
             return _urlRepository.GetAll();
         }
 
+        public URLModel GetLongURL(string longurl)
+        {
+            return _urlRepository.GetURLByLongUrl(longurl);
+        }
+
         public URLModel GetShortURL(string shortUrl)
         {
             return _urlRepository.GetURLByShortUrl(shortUrl);
