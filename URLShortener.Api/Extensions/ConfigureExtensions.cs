@@ -20,10 +20,20 @@ namespace URLShortener.Api.Extensions
                     {
                         var ex = error.Error;
 
-                        await context.Response.WriteAsync(ex.Message);
+                        await context.Response.WriteAsync(new ErrorModel()
+                        {
+                            StatusCode = 500,
+                            ErrorMessage = ex.Message
+                        }.ToString());
                     }
                 });
             });
         }
+    }
+
+    internal class ErrorModel
+    {
+        public int StatusCode { get; set; }
+        public string ErrorMessage { get; set; }
     }
 }
